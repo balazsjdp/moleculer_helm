@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "my-moleculer-chart.fullname" .name }}
-  namespace: moleculer
   labels:
     app: moleculer-{{ .name }}
 spec:
@@ -13,7 +12,6 @@ spec:
       app: moleculer-{{ .name }}
   template:
     metadata:
-      namespace: moleculer
       labels:
         app: moleculer-{{ .name }}
     spec:
