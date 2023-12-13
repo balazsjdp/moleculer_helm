@@ -1,0 +1,35 @@
+replicaCount: 1
+image:
+  repository: balazsjdp/moleculer
+  tag: latest
+  pullPolicy: Always
+
+SERVICES:
+  - name: api
+    serviceDir: api
+  - name: general
+    serviceDir: general-routes
+  - name: shiftplan
+    serviceDir: shiftplan-routes
+
+env:
+  SERVICEDIR: services
+  TRANSPORTER: nats://nats:4222
+  TYPEORM_HOST: host.docker.internal
+  TYPEORM_USERNAME: postgres
+  TYPEORM_PASSWORD: postgres
+  TYPEORM_DATABASE: GSD_Portal
+  TYPEORM_PORT: "5432"
+  TYPEORM_LOGGING: "true"
+  TYPEORM_SYNCHRONIZE: "true"
+  ENTITIES: "./models/**/*.js"
+  MOLECULER_CONFIG: moleculer.config.js
+
+port: 3000
+
+service:
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+  protocol: TCP
+  name: moleculer-api

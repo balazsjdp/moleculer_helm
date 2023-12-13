@@ -1,0 +1,49 @@
+{{- range .Values.services }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "my-moleculer-chart.fullname" .name }}
+  labels:
+    app: moleculer-{{ .name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: moleculer-{{ .name }}
+  template:
+    metadata:
+      labels:
+        app: moleculer-{{ .name }}
+    spec:
+      containers:
+      - name: micro-{{ .name }}
+        image: {{ $.Values.image.repository }}:{{ $.Values.image.tag }}
+        imagePullPolicy: {{ $.Values.image.pullPolicy }}
+        env: 
+          - name: SERVICEDIR
+            value: {{ .serviceDir }}
+          - name: SERVICES
+            value: {{ .name }}
+          - name: TRANSPORTER
+            value: {{ $.Values.env.TRANSPORTER }}
+          - name: TYPEORM_HOST
+            value: {{ $.Values.env.TYPEORM_HOST }}
+          - name: TYPEORM_USERNAME
+            value: {{ $.Values.env.TYPEORM_USERNAME }}
+          - name: TYPEORM_PASSWORD
+            value: {{ $.Values.env.TYPEORM_PASSWORD }}
+          - name: TYPEORM_DATABASE
+            value: {{ $.Values.env.TYPEORM_DATABASE }}
+          - name: TYPEORM_PORT
+            value: {{ $.Values.env.TYPEORM_PORT }}
+          - name: TYPEORM_LOGGING
+            value: {{ $.Values.env.TYPEORM_LOGGING }}
+          - name: TYPEORM_SYNCHRONIZE
+            value: {{ $.Values.env.TYPEORM_SYNCHRONIZE }}
+          - name: ENTITIES
+            value: {{ $.Values.env.ENTITIES }}
+          - name: MOLECULER_CONFIG
+            value: {{ $.Values.env.MOLECULER_CONFIG }}
+        ports:
+        - containerPort: 3000
+{{ end }}
