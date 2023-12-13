@@ -46,4 +46,5 @@ spec:
             value: {{ $.Values.env.MOLECULER_CONFIG  | quote }}
         ports:
         - containerPort: 3000
+---
 {{ end }}
