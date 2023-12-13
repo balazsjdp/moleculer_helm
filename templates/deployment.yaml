@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "moleculer_helm.fullname" $ }}
+  name: moleculer-{{ .name }}
   labels:
     app: moleculer-{{ .name }}
 spec:
