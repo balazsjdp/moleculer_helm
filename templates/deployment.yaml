@@ -16,7 +16,7 @@ spec:
         app: moleculer-{{ .name }}
     spec:
       containers:
-      - name: micro-{{ .name }}
+      - name: moleculer-{{ .name }}
         image: {{ $.Values.image.repository }}:{{ $.Values.image.tag }}
         imagePullPolicy: {{ $.Values.image.pullPolicy }}
         env: 
