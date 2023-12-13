@@ -47,4 +47,4 @@ spec:
         ports:
         - containerPort: 3000
 ---
-{{ end }}
+{{- end }}
