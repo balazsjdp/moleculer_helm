@@ -13,6 +13,7 @@ spec:
       app: moleculer-{{ .name }}
   template:
     metadata:
+      namespace: moleculer
       labels:
         app: moleculer-{{ .name }}
     spec:
