@@ -4,6 +4,7 @@ image:
   tag: latest
   pullPolicy: Always
 
+
 SERVICES:
   - name: api
     serviceDir: api
@@ -27,20 +28,13 @@ env:
 
 port: 3000
 
-service:
-  type: NodePort
-  port: 3000
-  targetPort: 3000
-  protocol: TCP
-  name: moleculer-api
-
-
 # Default values for asd.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
+
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -51,7 +45,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "mol"
+  name: ""
 
 podAnnotations: {}
 podLabels: {}
@@ -66,6 +60,10 @@ securityContext: {}
   # readOnlyRootFilesystem: true
   # runAsNonRoot: true
   # runAsUser: 1000
+
+service:
+  type: NodePort
+  port: 3000
 
 ingress:
   enabled: false

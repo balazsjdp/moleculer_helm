@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-moleculer-chart.fullname" .name }}
+  name: {{ include "moleculer_helm.fullname" $ }}
   labels:
     app: moleculer-{{ .name }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ $.Values.replicaCount }}
   selector:
     matchLabels:
       app: moleculer-{{ .name }}
