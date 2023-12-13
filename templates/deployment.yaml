@@ -1,4 +1,4 @@
-{{- range .Values.services }}
+{{- range .Values.SERVICES }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
