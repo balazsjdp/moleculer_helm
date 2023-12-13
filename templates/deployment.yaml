@@ -25,25 +25,25 @@ spec:
           - name: SERVICES
             value: {{ .name }}
           - name: TRANSPORTER
-            value: {{ $.Values.env.TRANSPORTER }}
+            value: {{ $.Values.env.TRANSPORTER  | quote }}
           - name: TYPEORM_HOST
-            value: {{ $.Values.env.TYPEORM_HOST }}
+            value: {{ $.Values.env.TYPEORM_HOST  | quote }}
           - name: TYPEORM_USERNAME
-            value: {{ $.Values.env.TYPEORM_USERNAME }}
+            value: {{ $.Values.env.TYPEORM_USERNAME  | quote }}
           - name: TYPEORM_PASSWORD
-            value: {{ $.Values.env.TYPEORM_PASSWORD }}
+            value: {{ $.Values.env.TYPEORM_PASSWORD  | quote }}
           - name: TYPEORM_DATABASE
-            value: {{ $.Values.env.TYPEORM_DATABASE }}
+            value: {{ $.Values.env.TYPEORM_DATABASE  | quote }}
           - name: TYPEORM_PORT
-            value: {{ $.Values.env.TYPEORM_PORT }}
+            value: {{ $.Values.env.TYPEORM_PORT  | quote }}
           - name: TYPEORM_LOGGING
-            value: {{ $.Values.env.TYPEORM_LOGGING }}
+            value: {{ $.Values.env.TYPEORM_LOGGING  | quote }}
           - name: TYPEORM_SYNCHRONIZE
-            value: {{ $.Values.env.TYPEORM_SYNCHRONIZE }}
+            value: {{ $.Values.env.TYPEORM_SYNCHRONIZE  | quote }}
           - name: ENTITIES
-            value: {{ $.Values.env.ENTITIES }}
+            value: {{ $.Values.env.ENTITIES  | quote }}
           - name: MOLECULER_CONFIG
-            value: {{ $.Values.env.MOLECULER_CONFIG }}
+            value: {{ $.Values.env.MOLECULER_CONFIG  | quote }}
         ports:
         - containerPort: 3000
 {{ end }}
